@@ -2,31 +2,36 @@
 
 <body>
 
-<%- include('../partials/nav.ejs') %>
-<div class="details content">
-    <h2><%= blog.title %></h2>
+  <%- include('../partials/nav.ejs') %>
+  <div class="details content">
+    <h2>
+      <%= blog.title %>
+    </h2>
     <div class="content">
-        <p><%= blog.body %></p>
+      <p>
+        <%= blog.body %>
+      </p>
     </div>
-         <button class="delete" data-doc="<%= blog._id %>">Delete</button>
-</div>
+    <button class="delete" data-doc="<%= blog._id %>">Delete</button>
+  </div>
 
-<%- include('../partials/footer.ejs') %>
+  <%- include('../partials/footer.ejs') %>
 
-    <script>
+  <script>
     const trashcan = document.querySelector('.delete')
 
     trashcan.addEventListener('click', (e) => {
-            const endpoint = `/blogs/${trashcan.dataset.doc}`
+      const endpoint = `/blogs/${trashcan.dataset.doc}`
 
-            fetch(endpoint, {
-            method: 'DELETE'
-            })
-            .then((response) => response.json())
-            .then((data) => window.location.href = data.redirect)
-            .catch(err => console.log(err))
+      fetch(endpoint, {
+          method: 'DELETE'
+        })
+        .then((response) => response.json())
+        .then((data) => window.location.href = data.redirect)
+        .catch(err => console.log(err))
     })
-    </script>
-    
+  </script>
+
 </body>
+
 </html>

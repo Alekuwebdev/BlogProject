@@ -30,7 +30,7 @@ const blog_details = (req, res) => {
 
     Blog.findById(id)
         .then((response) => {
-            res.render('blogs/details', { blog: response , title: 'Deteils'})
+            res.render('blogs/details', { blog: response, title: 'Deteils' })
         })
         .catch((err) => {
             res.status(404).render('404', { title: '404' })
@@ -42,7 +42,7 @@ const blog_delete = (req, res) => {
 
     Blog.findByIdAndDelete(id)
         .then((response) => {
-            res.json({ redirect: '/blogs'})
+            res.json({ redirect: '/blogs' })
         })
         .catch((err) => {
             console.log(err)
